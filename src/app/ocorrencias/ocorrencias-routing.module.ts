@@ -4,7 +4,7 @@ import { OcorrenciasComponent } from './ocorrencias/ocorrencias.component';
 
 const routes: Routes = [
   {
-    path:'', component:OcorrenciasComponent
+    path: '', component: OcorrenciasComponent
   }
 ];
 
