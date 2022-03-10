@@ -23,13 +23,13 @@
 
   <mat-card>
     <mat-card-subtitle>Regiões</mat-card-subtitle>
-    <table matSort (matSortChange)="regiao_var">
+    <table matSort (matSortChange)="regioes">
       <tr>
         <th mat-sort-header="id">ID</th>
         <th mat-sort-header="regiao'">Região</th>
         <th mat-sort-header="total_exames">N° de Exames</th>
       </tr>
-      <tr *ngFor="let element of regiao_var">
+      <tr *ngFor="let element of regioes">
         <td>{{element.id}}</td>
         <td>{{element.regiao}}</td>
         <td>{{element.total_exames}}</td>

@@ -16,7 +16,7 @@ import { RegiaoService } from '../service/regiao.service';
 export class OcorrenciasComponent implements OnInit, OnDestroy {
 
   ocorrencia_exame: Ocorrencia[] = [];
-  regiao_var: Regiao[] = [];
+  regioes: Regiao[] = [];
   faixaetaria_var: Faixaetaria[] = [];
 
   readonly subscriptions = new Subscription();
@@ -28,8 +28,8 @@ export class OcorrenciasComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit(): void {
-    this.ocorrencia_exame = this.ocorrenciaService.listOcorrencias();
     this.listarRegioes();
+    this.ocorrencia_exame = this.ocorrenciaService.listOcorrencias();
     this.faixaetaria_var = this.faixaEtariaService.listFaixaEtaria();
   }
 
@@ -39,7 +39,7 @@ export class OcorrenciasComponent implements OnInit, OnDestroy {
 
   private listarRegioes(): void {
     const subscription = this.regiaoService.listRegiao().subscribe((regioes => {
-      this.regiao_var = regioes;
+      this.regioes = regioes;
     }));
 
     this.subscriptions.add(subscription);
