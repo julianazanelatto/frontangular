@@ -1,4 +1,6 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { Regiao } from '../model/regiao';
 
 @Injectable({
@@ -6,15 +8,13 @@ import { Regiao } from '../model/regiao';
 })
 export class RegiaoService {
 
-  constructor() { }
+  constructor(
+    private http: HttpClient,
+  ) { }
 
-  listRegiao(): Regiao[] {
-    return [
-      { id: 1, regiao: 'Norte', total_exames: 10 },
-      { id: 2, total_exames: 40, regiao: 'Nordeste' },
-      { id: 3, total_exames: 1250, regiao: 'Sudeste' },
-      { id: 4, total_exames: 1505, regiao: 'Sul' },
-      { id: 5, total_exames: 20, regiao: 'Centro-Oeste' }
-    ];
+  listRegiao(): Observable<Regiao[]> {
+    const url = '/assets/regiao.json';
+    return this.http.get<Regiao[]>(url);
   }
+
 }

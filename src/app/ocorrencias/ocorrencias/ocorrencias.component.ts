@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { Faixaetaria } from '../model/faixaetaria';
 import { Ocorrencia } from '../model/ocorrencia';
 import { Regiao } from '../model/regiao';
@@ -12,11 +13,13 @@ import { RegiaoService } from '../service/regiao.service';
   styleUrls: ['./ocorrencias.component.scss']
 })
 
-export class OcorrenciasComponent implements OnInit {
+export class OcorrenciasComponent implements OnInit, OnDestroy {
 
   ocorrencia_exame: Ocorrencia[] = [];
   regiao_var: Regiao[] = [];
   faixaetaria_var: Faixaetaria[] = [];
+
+  readonly subscriptions = new Subscription();
 
   constructor(
     private ocorrenciaService: OcorrenciaService,
@@ -26,7 +29,20 @@ export class OcorrenciasComponent implements OnInit {
 
   ngOnInit(): void {
     this.ocorrencia_exame = this.ocorrenciaService.listOcorrencias();
-    this.regiao_var = this.regiaoService.listRegiao();
+    this.listarRegioes();
     this.faixaetaria_var = this.faixaEtariaService.listFaixaEtaria();
   }
+
+  ngOnDestroy(): void {
+    this.subscriptions.unsubscribe();
+  }
+
+  private listarRegioes(): void {
+    const subscription = this.regiaoService.listRegiao().subscribe((regioes => {
+      this.regiao_var = regioes;
+    }));
+
+    this.subscriptions.add(subscription);
+  }
+
 }
