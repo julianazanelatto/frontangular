@@ -46,17 +46,18 @@ export class OcorrenciasComponent implements OnInit, OnDestroy {
   }
 
   private listarOcorrencias(): void{
-    const subscriptionOcorrencias = this.ocorrenciaService.listOcorrencias().subscribe(((
-      ocorrecias => this.ocorrencia_exame = ocorrecias
-    )));
+    const subscriptionOcorrencias = this.ocorrenciaService.listOcorrencias().subscribe((
+        ocorrecias => {this.ocorrencia_exame = ocorrecias
+      }
+    ));
 
     this.subscriptions.add(subscriptionOcorrencias);
   }
 
   private listarFaixas(): void{
     const subscriptionFaixas = this.faixaEtariaService.listFaixaEtaria().subscribe(( 
-      faixa => (this.faixaetarias = faixa
-    )));
+      faixa => {this.faixaetarias = faixa}
+    ));
 
     this.subscriptions.add(subscriptionFaixas)
   }
