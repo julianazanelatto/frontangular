@@ -11,6 +11,8 @@ as configurações do application.propeties para realizar a conexão.
 
 A integração do front é realizada através de um redirecionamento utilizando proxy. O arquivo proxy.config.js possui os
 parâmetros para efetuar o redirecionamento.
+
+Para utilizar o proxy inicie a aplicação utilizando o comando: npm run start 
 _______________________________________________________________________________________________________
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.2.5.
