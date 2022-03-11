@@ -17,7 +17,7 @@ export class OcorrenciasComponent implements OnInit, OnDestroy {
 
   ocorrencia_exame: Ocorrencia[] = [];
   regioes: Regiao[] = [];
-  faixaetaria_var: Faixaetaria[] = [];
+  faixaetarias: Faixaetaria[] = [];
 
   readonly subscriptions = new Subscription();
 
@@ -29,8 +29,8 @@ export class OcorrenciasComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.listarRegioes();
-    this.ocorrencia_exame = this.ocorrenciaService.listOcorrencias();
-    this.faixaetaria_var = this.faixaEtariaService.listFaixaEtaria();
+    this.listarOcorrencias();
+    this.listarFaixas();
   }
 
   ngOnDestroy(): void {
@@ -43,6 +43,22 @@ export class OcorrenciasComponent implements OnInit, OnDestroy {
     }));
 
     this.subscriptions.add(subscription);
+  }
+
+  private listarOcorrencias(): void{
+    const subscriptionOcorrencias = this.ocorrenciaService.listOcorrencias().subscribe(((
+      ocorrecias => this.ocorrencia_exame = ocorrecias
+    )));
+
+    this.subscriptions.add(subscriptionOcorrencias);
+  }
+
+  private listarFaixas(): void{
+    const subscriptionFaixas = this.faixaEtariaService.listFaixaEtaria().subscribe(( 
+      faixa => (this.faixaetarias = faixa
+    )));
+
+    this.subscriptions.add(subscriptionFaixas)
   }
 
 }

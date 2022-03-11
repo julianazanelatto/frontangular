@@ -14,7 +14,7 @@
       <tr *ngFor="let element of ocorrencia_exame">
         <td>{{element.id}}</td>
         <td>{{element.regiao_id}}</td>
-        <td>{{element.Mes}}</td>
+        <td>{{element.mes}}</td>
         <td>{{element.faixa_id}}</td>
         <td>{{element.qnt_exames}}</td>
       </tr>
@@ -22,31 +22,31 @@
   </mat-card>
 
   <mat-card>
-    <mat-card-subtitle>Regiões</mat-card-subtitle>
+    <mat-card-subtitle>Relação de Regiões Brasileiras</mat-card-subtitle>
     <table matSort (matSortChange)="regioes">
       <tr>
         <th mat-sort-header="id">ID</th>
         <th mat-sort-header="regiao'">Região</th>
-        <th mat-sort-header="total_exames">N° de Exames</th>
+        <th mat-sort-header="total">N° Exames</th>
       </tr>
       <tr *ngFor="let element of regioes">
         <td>{{element.id}}</td>
         <td>{{element.regiao}}</td>
-        <td>{{element.total_exames}}</td>
+        <td>{{element.total}}</td>
       </tr>
     </table>
   </mat-card>
 
   <mat-card>
-    <mat-card-subtitle>Faixa Etaria</mat-card-subtitle>
-    <table matSort (matSortChange)="faixaetaria_var">
+    <mat-card-subtitle>Faixa Etaria das mulheres que realizaram os exames</mat-card-subtitle>
+    <table matSort (matSortChange)="faixaetarias">
       <tr>
         <th mat-sort-header="id">ID</th>
         <th mat-sort-header="faixa_i">Faixa inicial</th>
         <th mat-sort-header="faixa_n">Faixa final</th>
         <th mat-sort-header="descricao">Descrição</th>
       </tr>
-      <tr *ngFor="let element of faixaetaria_var">
+      <tr *ngFor="let element of faixaetarias">
         <td>{{element.id}}</td>
         <td>{{element.faixa_i}}</td>
         <td>{{element.faixa_n}}</td>
